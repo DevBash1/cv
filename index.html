@@ -138,6 +138,45 @@
 
   .contact a:hover { color: var(--ink); }
 
+  /* ── Action buttons ── */
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+    justify-content: flex-end;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+  }
+
+  .btn:hover { border-color: var(--ink); }
+
+  .btn svg { display: block; }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+  }
+
+  .btn-primary:hover { background: #000; border-color: #000; }
+
   /* ── Bullets ── */
   .job-bullets {
     margin-top: 12px;
@@ -361,6 +400,38 @@
     .contact { text-align: left; }
     .job { grid-template-columns: 1fr; }
     .job-right { text-align: left; }
+    .actions { justify-content: flex-start; }
+  }
+
+  /* ── Print / PDF (Download button calls window.print) ── */
+  @media print {
+    @page { margin: 14mm; }
+
+    html { scroll-behavior: auto; }
+
+    body {
+      font-size: 11.5px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page { max-width: 100%; padding: 0; }
+
+    /* Reveal everything — entrance animations start at opacity:0 */
+    header, section, footer, .job {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+
+    /* Hide interactive controls from the PDF */
+    .actions { display: none !important; }
+
+    /* Keep blocks from splitting across pages */
+    .job, .skill-group { break-inside: avoid; page-break-inside: avoid; }
+    .section-label { break-after: avoid; }
+
+    a { color: var(--ink); }
   }
 </style>
 
