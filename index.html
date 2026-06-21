@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ikoro Samuel — Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white: #ffffff;
+    --off: #f8f8f6;
+    --ink: #111110;
+    --mid: #555552;
+    --light: #aaa9a4;
+    --rule: #e5e4e0;
+    --accent: #111110;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Layout ── */
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 80px 40px 120px;
+  }
+
+  /* ── Header ── */
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 64px;
+    gap: 24px;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: rise 0.6s ease forwards;
+  }
+
+  .name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .name em {
+    font-style: italic;
+    color: var(--mid);
+  }
+
+  .alias {
+    margin-top: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--light);
+    letter-spacing: 0.06em;
+  }
+
+  .alias span {
+    color: var(--mid);
+  }
+
+  .headline {
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--mid);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .contact {
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 2;
+  }
+
+  .contact a {
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact a:hover { color: var(--ink); }
+
+  /* ── Bullets ── */
+  .job-bullets {
+    margin-top: 12px;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .job-bullets li {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.7;
+    padding: 3px 0 3px 16px;
+    position: relative;
+    font-weight: 300;
+  }
+
+  .job-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--rule);
+    font-size: 12px;
+  }
+
+  /* ── Sections ── */
+  section {
+    margin-bottom: 56px;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: rise 0.5s ease forwards;
+  }
+
+  section:nth-child(2) { animation-delay: 0.1s; }
+  section:nth-child(3) { animation-delay: 0.18s; }
+  section:nth-child(4) { animation-delay: 0.26s; }
+  section:nth-child(5) { animation-delay: 0.34s; }
+  section:nth-child(6) { animation-delay: 0.42s; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 24px;
+  }
+
+  /* ── About ── */
+  .about-text {
+    font-size: 16px;
+    color: var(--mid);
+    line-height: 1.8;
+    max-width: 600px;
+    font-weight: 300;
+  }
+
+  .about-text strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ── Experience ── */
+  .job {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px 24px;
+    padding: 28px 0;
+    border-top: 1px solid var(--rule);
+    transition: background 0.2s;
+  }
+
+  .job:last-child { border-bottom: 1px solid var(--rule); }
+
+  .job-left {}
+
+  .job-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .job-company {
+    font-size: 13px;
+    color: var(--mid);
+    margin-top: 3px;
+  }
+
+  .job-skills {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--light);
+    margin-top: 10px;
+    letter-spacing: 0.04em;
+  }
+
+  .job-right {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .job-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--light);
+    white-space: nowrap;
+  }
+
+  .job-location {
+    font-size: 12px;
+    color: var(--light);
+    margin-top: 4px;
+    white-space: nowrap;
+  }
+
+  .badge {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 3px 8px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--light);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .badge.current {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+
+  /* ── Company / project links ── */
+  .job-links {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+  }
+
+  .job-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--light);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .job-link:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+
+  .job-link-label {
+    font-size: 10px;
+    color: var(--light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+
+  /* ── Skills ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0;
+  }
+
+  .skill-group {
+    padding: 20px 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .skill-group:nth-child(n) {
+    /* subtle stagger via JS */
+  }
+
+  .skill-cat {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 10px;
+  }
+
+  .skill-list {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 2;
+  }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--light);
+    letter-spacing: 0.06em;
+    opacity: 0;
+    animation: rise 0.5s ease 0.5s forwards;
+  }
+
+  /* ── Animation ── */
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .page { padding: 48px 24px 80px; }
+    header { grid-template-columns: 1fr; }
+    .contact { text-align: left; }
+    .job { grid-template-columns: 1fr; }
+    .job-right { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <header>
+    <div>
+      <h1 class="name">Ikoro <em>Samuel</em></h1>
+      <p class="headline">Software Engineer &amp; Founder</p>
+      <p class="alias">aka <span>Dev Bash</span></p>
+    </div>
+    <div class="contact">
+      <div><a href="tel:+2348054914518">+234-805-491-4518</a></div>
+      <div><a href="mailto:ikorosamuel1@gmail.com">ikorosamuel1@gmail.com</a></div>
+      <div>Enugu, Enugu 400105 · Nigeria</div>
+      <div><a href="https://salesive.com">salesive.com</a></div>
+    </div>
+  </header>
+
+  <section>
+    <p class="section-label">About</p>
+    <p class="about-text">
+      Full-stack engineer with <strong>10 years of experience</strong>, writing code since 2016 at age 14.
+      Track record of shipping real products across backend systems, real-time infrastructure, and complex API integrations.
+      Experienced working in fast-paced remote teams and delivering with precision.
+      Currently <strong>fully focused on a single project</strong> and open to new opportunities.
+    </p>
+  </section>
+
+  <section>
+    <p class="section-label">Experience</p>
+
+<div class="job">
+      <div class="job-left">
+        <div class="job-title">Founder &amp; CEO</div>
+        <div class="job-company">Salesive Force LTD</div>
+        <div class="job-skills">Start-up Leadership · Software Development · Product Strategy</div>
+        <div class="job-links">
+          <span class="job-link-label">Company</span><a href="https://salesive.com" target="_blank" class="job-link">salesive.com</a>
+        </div>
+        <ul class="job-bullets">
+          <li>Architected and built a multi-platform sales automation system integrating WhatsApp, Instagram, TikTok, X, Facebook, and Telegram into a single Unified Inbox.</li>
+          <li>Designed real-time message delivery using Socket.IO, Redis pub/sub, and RabbitMQ consumer queues across all six platforms.</li>
+          <li>Built the full product stack hands-on — Node.js APIs, MongoDB data models, React frontend with a dark industrial UI.</li>
+          <li>Led product strategy, legal structuring, brand identity, and go-to-market for the Nigerian SME market.</li>
+        </ul>
+      </div>
+      <div class="job-right">
+        <div class="job-period">Jul 2025 — Present</div>
+        <div class="job-location">Enugu, Nigeria · Remote</div>
+        <span class="badge current">Current</span>
+      </div>
+    </div>
+
+<div class="job">
+      <div class="job-left">
+        <div class="job-title">Full Stack Engineer</div>
+        <div class="job-company">Custolabs</div>
+        <div class="job-skills">Software Infrastructure · Artificial Intelligence</div>
+        <div class="job-links">
+          <span class="job-link-label">Company</span><a href="https://custolabs.ai" target="_blank" class="job-link">custolabs.ai</a>
+          <span class="job-link-label">Built</span><a href="https://bounta.app" target="_blank" class="job-link">bounta.app</a>
+        </div>
+        <ul class="job-bullets">
+          <li>Built and maintained full-stack features across the product, contributing to both backend services and frontend interfaces.</li>
+          <li>Worked on AI-integrated software infrastructure, supporting intelligent automation within the platform.</li>
+          <li>Collaborated with a remote team to ship reliable, scalable software in a fast-paced startup environment.</li>
+        </ul>
+      </div>
+      <div class="job-right">
+        <div class="job-period">Jan 2026 — May 2026</div>
+        <div class="job-location">San Francisco, CA · Remote</div>
+        <span class="badge">5 mos</span>
+      </div>
+    </div>
+
+<div class="job">
+      <div class="job-left">
+        <div class="job-title">Full Stack Engineer</div>
+        <div class="job-company">Switchcase Labs</div>
+        <div class="job-skills">Full-Stack Development · Software Infrastructure</div>
+        <div class="job-links">
+          <span class="job-link-label">Built</span><a href="https://paydantic.io" target="_blank" class="job-link">paydantic.io</a>
+          <a href="https://ensync.cloud" target="_blank" class="job-link">ensync.cloud</a>
+        </div>
+        <ul class="job-bullets">
+          <li>Developed and maintained full-stack web applications across multiple client projects.</li>
+          <li>Built Paydantic — a contract management and payment-by-deliverable platform with escrow, milestone billing, and team collaboration.</li>
+          <li>Designed and implemented scalable backend services and RESTful APIs.</li>
+          <li>Contributed to software infrastructure improvements that improved system reliability and performance.</li>
+        </ul>
+      </div>
+      <div class="job-right">
+        <div class="job-period">May 2025 — Jan 2026</div>
+        <div class="job-location">United Kingdom · Remote</div>
+        <span class="badge">9 mos</span>
+      </div>
+    </div>
+
+<div class="job">
+      <div class="job-left">
+        <div class="job-title">Back End Developer</div>
+        <div class="job-company">Norlics Digital Services</div>
+        <div class="job-skills">Back-end Operations · Server Side Programming</div>
+        <div class="job-links">
+          <span class="job-link-label">Company</span><a href="https://norlicsdigital.ng" target="_blank" class="job-link">norlicsdigital.ng</a>
+          <span class="job-link-label">Built</span><a href="http://irs.en.gov.ng" target="_blank" class="job-link">irs.en.gov.ng</a>
+        </div>
+        <ul class="job-bullets">
+          <li>Built and maintained server-side systems and APIs powering client-facing digital products.</li>
+          <li>Contributed backend development on irs.en.gov.ng — the Enugu State Internal Revenue Service portal.</li>
+          <li>Managed back-end operations including database design, query optimization, and service reliability.</li>
+          <li>Implemented integrations with third-party services and APIs to extend platform capabilities.</li>
+        </ul>
+      </div>
+      <div class="job-right">
+        <div class="job-period">Mar 2024 — Jan 2026</div>
+        <div class="job-location">Enugu, Nigeria · Remote</div>
+        <span class="badge">1 yr 11 mos</span>
+      </div>
+    </div>
+
+<div class="job">
+      <div class="job-left">
+        <div class="job-title">Cyber Security Engineer</div>
+        <div class="job-company">Zeddpay</div>
+        <div class="job-skills">Cybersecurity · Cyber Security Risk</div>
+        <div class="job-links">
+          <span class="job-link-label">Company</span><a href="https://zeddpay.com" target="_blank" class="job-link">zeddpay.com</a>
+        </div>
+        <ul class="job-bullets">
+          <li>Documented computer security and emergency measures — policies, procedures and tests.</li>
+          <li>Performed risk assessments and executed tests of data processing systems to ensure correct functioning and security.</li>
+          <li>Trained users and promoted security awareness to boost system security and improve server and network efficiency.</li>
+          <li>Developed plans to safeguard computer files against accidental and unauthorized modification, destruction and disclosure.</li>
+          <li>Analyzed information to determine, recommend and plan installation of new systems and modifications to existing ones.</li>
+          <li>Prepared reports and correspondence on project specifications, activities and status.</li>
+        </ul>
+      </div>
+      <div class="job-right">
+        <div class="job-period">Sep 2022 — Aug 2023</div>
+        <div class="job-location">Nigeria · Remote</div>
+        <span class="badge">1 yr</span>
+      </div>
+    </div>
+
+<div class="job">
+      <div class="job-left">
+        <div class="job-title">Back End Developer</div>
+        <div class="job-company">Enugu State Tech Hub</div>
+        <div class="job-skills">Server Side Programming · Back-End Web Development</div>
+        <div class="job-links">
+          <span class="job-link-label">Built</span><span class="job-link" style="cursor:default;">All Enugu State ministry &amp; agency websites</span>
+        </div>
+        <ul class="job-bullets">
+          <li>Developed and maintained official websites for multiple Enugu State government ministries and agencies.</li>
+          <li>Built server-side systems supporting public-facing government portals across the state.</li>
+          <li>Collaborated with government stakeholders to ensure sites met accessibility, reliability, and content management requirements.</li>
+        </ul>
+      </div>
+      <div class="job-right">
+        <div class="job-period">Oct 2022 — Apr 2023</div>
+        <div class="job-location">Enugu, Nigeria · On-site</div>
+        <span class="badge">7 mos</span>
+      </div>
+    </div>
+
+<div class="job">
+      <div class="job-left">
+        <div class="job-title">Full Stack Web Developer</div>
+        <div class="job-company">PraiseTech Enterprise</div>
+        <div class="job-skills">Server Side Programming · Back-End Web Development</div>
+        <ul class="job-bullets">
+          <li>Wrote supporting code for web applications and websites.</li>
+          <li>Developed databases that supported web applications and websites.</li>
+          <li>Evaluated and recommended server hardware and software.</li>
+          <li>Collaborated with management and users to develop e-commerce strategies and integrate them with web sites.</li>
+          <li>Renewed domain name registrations.</li>
+        </ul>
+      </div>
+      <div class="job-right">
+        <div class="job-period">Apr 2019 — Aug 2022</div>
+        <div class="job-location">Enugu, Nigeria · On-site</div>
+        <span class="badge">3 yrs</span>
+      </div>
+    </div>
+
+</section>
+
+  <section>
+    <p class="section-label">Skills</p>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-cat">Languages</div>
+        <div class="skill-list">JavaScript<br>TypeScript<br>PHP<br>Bash</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-cat">Backend</div>
+        <div class="skill-list">Node.js<br>Express<br>PHP (Laravel)<br>REST APIs<br>RabbitMQ<br>Redis</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-cat">Frontend</div>
+        <div class="skill-list">React<br>HTML / CSS<br>JavaScript<br>SVG / Animation</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-cat">Databases</div>
+        <div class="skill-list">MongoDB<br>MySQL<br>PostgreSQL<br>Redis</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-cat">Integrations</div>
+        <div class="skill-list">WhatsApp API<br>Instagram Graph<br>TikTok API<br>Twitter API v2<br>Facebook API<br>Telegram API</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-cat">Infra &amp; Tools</div>
+        <div class="skill-list">Socket.IO<br>Docker<br>Git / GitHub<br>OAuth 2.0<br>Cloudflare<br>Linux / Bash</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-cat">Security</div>
+        <div class="skill-list">Cybersecurity<br>Risk Assessment<br>Security Auditing<br>Data Encryption</div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <footer>
+    <span>Ikoro Samuel · Resume</span>
+    <span>2026</span>
+  </footer>
+
+</main>
+</body>
+</html>
