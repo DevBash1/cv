@@ -1,0 +1,54 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FCFCFA"/>
+      <stop offset="1" stop-color="#F1F0EB"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1000 110) rotate(136.974) scale(363.471 466.068)">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="40" y="40" width="1120" height="550" rx="26" stroke="#D8D6CF"/>
+  <rect x="82" y="82" width="1036" height="466" rx="22" fill="url(#glow)" opacity="0.9"/>
+
+  <path d="M82 200H1118" stroke="#E2E0D9"/>
+  <path d="M820 82V548" stroke="#E2E0D9"/>
+  <path d="M82 500H760" stroke="#E2E0D9"/>
+
+  <g opacity="0.8">
+    <circle cx="893" cy="175" r="64" stroke="#1C1C1A" stroke-opacity="0.08" stroke-width="18"/>
+    <circle cx="893" cy="175" r="29" fill="#1C1C1A"/>
+    <circle cx="1043" cy="375" r="119" stroke="#1C1C1A" stroke-opacity="0.05" stroke-width="1.5"/>
+    <circle cx="1043" cy="375" r="89" stroke="#1C1C1A" stroke-opacity="0.07" stroke-width="1.5"/>
+    <circle cx="1043" cy="375" r="59" stroke="#1C1C1A" stroke-opacity="0.09" stroke-width="1.5"/>
+  </g>
+
+  <text x="82" y="124" fill="#8D8B84" font-family="'Courier New', monospace" font-size="18" letter-spacing="5">FULL-STACK SOFTWARE ENGINEER / FOUNDER</text>
+
+  <text x="82" y="301" fill="#111110" font-family="Georgia, 'Times New Roman', serif" font-size="88">Ikoro</text>
+  <text x="347" y="301" fill="#5A5A56" font-family="Georgia, 'Times New Roman', serif" font-size="88" font-style="italic">Samuel</text>
+
+  <text x="82" y="368" fill="#5A5A56" font-family="Arial, Helvetica, sans-serif" font-size="29">
+    10 years building backend systems, real-time infrastructure,
+  </text>
+  <text x="82" y="407" fill="#5A5A56" font-family="Arial, Helvetica, sans-serif" font-size="29">
+    and complex API integrations.
+  </text>
+
+  <text x="82" y="458" fill="#111110" font-family="'Courier New', monospace" font-size="22" letter-spacing="2">AKA DEV BASH</text>
+  <text x="82" y="545" fill="#8D8B84" font-family="'Courier New', monospace" font-size="18" letter-spacing="4">DEVBASH.CV</text>
+
+  <text x="867" y="275" fill="#111110" font-family="'Courier New', monospace" font-size="21" letter-spacing="2">LOCATION</text>
+  <text x="867" y="307" fill="#5A5A56" font-family="Arial, Helvetica, sans-serif" font-size="28">Enugu, Nigeria</text>
+
+  <text x="867" y="380" fill="#111110" font-family="'Courier New', monospace" font-size="21" letter-spacing="2">FOCUS</text>
+  <text x="867" y="412" fill="#5A5A56" font-family="Arial, Helvetica, sans-serif" font-size="26">Node.js, React, MongoDB</text>
+  <text x="867" y="448" fill="#5A5A56" font-family="Arial, Helvetica, sans-serif" font-size="26">Product engineering</text>
+  <text x="867" y="482" fill="#5A5A56" font-family="Arial, Helvetica, sans-serif" font-size="26">Systems design</text>
+
+  <rect x="1000" y="97" width="68" height="68" rx="16" fill="#111110"/>
+  <text x="1034" y="144" text-anchor="middle" fill="#F8F8F6" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-style="italic">S</text>
+</svg>
